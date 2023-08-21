@@ -37,7 +37,7 @@ int _strlen(char *s);
 
 int spIndex(char ch, struct sp_char *p);
 
-int _putstr(char *s, int len);
+int _puts(char *str, int len);
 
 void _putInt(unsigned int num, int *params);
 
