@@ -16,6 +16,33 @@ typedef struct sp_char
 	char ch;
 	int (*fun)(va_list, int *);
 } spChar;
+#define FLAGS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+/**
+ *struct params-t - parameters struct
+ *@unsign: unsign flag
+ *@zero: 0
+ *@space: space
+ *@window: # sign
+ *@plus: + sign
+ *@minus: - sign
+ *@width: width
+ *@precision: % sign
+ *@h_modifier: short
+ *@l_modifier: long
+ */
+typedef struct params_t
+{
+        unsigned int unsign : 1;
+        unsigned int zero : 1;
+        unsigned int window : 1;
+        unsigned int space : 1;
+         unsigned int plus : 1;
+        unsigned int minus : 1;
+        unsigned int width;
+        unsigned int precision;
+        unsigned int h_modifier : 1;
+        unsigned int l_modifier : 1;
+} params;
 
 /**
 *struct signs - sturct for the special character
@@ -27,37 +54,6 @@ typedef struct signs
 	char ch;
 	void (*fun)(int, char, int, va_list, int *);
 } sign;
-
-#define PARAMS_INIT {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-#define CONVERT_UNSIGNED 2
-
-/**
- *struct parameters - parameters struct
- *@unsign: unsign flag
- *@zero: 0
- *@space_sign: space
- *@window_sign: # sign
- *@postive_sign: + sign
- *@negative_sign: - sign
- *@width: width
- *@precision: % sign
- *@h_modifier: short
- *@l_modifier: long
- */
-typedef struct params_t
-{
-	unsigned int unsign : 1;
-	unsigned int zero : 1;
-	unsigned int window_sign : 1;
-	unsigned int space_sign : 1;
-	unsigned int postive_sign : 1;
-	unsigned int minus : 1;
-	unsigned int width;
-	unsigned int precision;
-	unsigned int h_modifier : 1;
-	unsigned int l_modifier : 1;
-} params;
-
 
 int _printf(const char *format, ...);
 
